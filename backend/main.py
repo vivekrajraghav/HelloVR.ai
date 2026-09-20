@@ -182,6 +182,7 @@ app.add_middleware(
 def home():
     return {"message":"Welcome! I'm representative of Mr. Vivek"}
 @app.get("/wake",tags=["Health"])
+@app.head("/wake")
 async def wake_up():
     return {"status":"awake "}
 

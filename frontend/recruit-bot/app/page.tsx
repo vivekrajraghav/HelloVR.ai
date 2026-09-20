@@ -147,7 +147,7 @@ export default function ChatUI() {
           
           <div className="flex flex-col gap-1">
             {/* MOBILE POLISH: Smaller text headers for mobile */}
-            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Vivek Raghav.</h1>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Vivek Raghav</h1>
             <div className="flex items-center gap-2 mt-1">
               <span className="px-2 py-1 md:px-3 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-[10px] md:text-xs font-bold tracking-wide uppercase flex items-center gap-1.5 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
