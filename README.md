@@ -1,114 +1,100 @@
 # HelloVR.ai 🚀
-**An Interactive AI Recruiting Assistant & Personal Portfolio**
 
-[![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Groq](https://img.shields.io/badge/Groq_API-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-[![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
+![Python](https://img.shields.io/badge/Python-3.11-0078D4?logo=python&logoColor=white) ![Groq API](https://img.shields.io/badge/Groq-API-e76f51) ![Prompt Engineering](https://img.shields.io/badge/Prompt%20Engineering-Advanced-158a3e) ![Next.js](https://img.shields.io/badge/Next.js-App_Router-black?logo=next.js) ![FastAPI](https://img.shields.io/badge/FastAPI-Streaming-009688?logo=fastapi&logoColor=white)
 
-**[View Live Project]** <!-- Add your Vercel URL here, e.g., (https://hello-vr-frontend.vercel.app) -->
-**[View Backend API]** <!-- Add your Render URL here, e.g., (https://hellovr-backend.onrender.com) -->
+**An Interactive AI Assistant & Personal Portfolio**
 
----
+An advanced, decoupled AI recruiter portfolio application. This monorepo project leverages a Next.js App Router frontend deployed on Vercel and a robust FastAPI backend hosted on Render, all powered by a Groq LLM engine to deliver lightning-fast, context-aware responses.
 
-## 📖 Overview
+## 🏗️ Architecture
 
-**HelloVR.ai** is a full-stack, AI-powered conversational agent designed to serve as an interactive resume and recruiting assistant. Built with a decoupled architecture, it allows recruiters and engineering managers to "chat" directly with an AI representative trained specifically on my professional background in **Data Science, AI Engineering, and Bioinformatics**.
+The system uses a decoupled monorepo structure where the frontend and backend operate independently but communicate in real-time using server-sent events (streaming). 
 
-The project features a custom command-line/terminal-inspired UI, real-time streaming LLM responses, and a highly resilient backend.
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as User / Client
+    participant F as Next.js Frontend (Vercel)
+    participant B as FastAPI Backend (Render)
+    participant LLM as Groq API (Single Key)
 
-## ✨ Key Features
+    U->>F: Types a query in chat
+    F->>B: POST /chat (User Message)
+    B->>B: Format System Prompt & Context Window
+    B->>LLM: Request LLM Completion
+    LLM-->>B: Stream Tokens
+    B-->>F: Stream Text Response
+    F-->>U: Display live typing effect
 
-- **Conversational UI:** A sleek, terminal-style interface built with Next.js and Tailwind CSS, fully responsive for both desktop and mobile viewing.
-- **Real-Time Streaming:** Utilizes the Groq API for ultra-low latency, streaming text generation, providing a snappy user experience.
-- **Smart Context Management:** Implements a sliding-window token memory system in the backend to maintain conversation history without exceeding token limits.
-- **High Availability Architecture:** Features a robust dual-key API fallback system. If the primary API key is rate-limited, the system seamlessly fails over to a secondary key without interrupting the user.
-- **Cross-Origin Security:** Fully configured CORS and local dev environment bindings (`0.0.0.0`) for seamless mobile-to-desktop local testing and secure production access.
-
----
-
-## 🏗️ Architecture & Tech Stack
-
-This project is built as a **Monorepo** containing two distinct environments:
-
-### Frontend (`frontend/recruit-bot`)
-- **Framework:** Next.js (App Router)
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel
-
-### Backend (`backend`)
-- **Framework:** FastAPI (Python)
-- **AI Inference:** Groq API (Llama 3 / Mixtral)
-- **Server:** Uvicorn
-- **Deployment:** Render (Containerized Web Service)
-
----
-
-## 📂 Repository Structure
-
-```text
-HelloVR.ai/
-│
-├── frontend/
-│   └── recruit-bot/          # Next.js Application
-│       ├── app/              # App Router (page.tsx, layout.tsx, globals.css)
-│       ├── public/           # Static assets
-│       ├── package.json      # Frontend dependencies
-│       └── next.config.ts    # Next.js configuration
-│
-└── backend/                  # FastAPI Application
-    ├── main.py               # Core API logic, CORS, and Groq streaming integration
-    └── requirements.txt      # Python dependencies
 ```
 
----
+## ⚙️ Deep Dive: Backend Mechanics
 
-## 🚀 Getting Started (Local Development)
+The backend is built with Python 3.11 and FastAPI, designed to handle AI chat generation efficiently:
 
-To run this project locally, you will need Node.js and Python 3.10+ installed.
+* **Groq API Integration:** The application utilizes a Groq API key for high-speed inference, bypassing the traditional latency overhead associated with standard LLMs.
+* **Sliding Window Context:** The system intelligently retains the most recent conversation turns. This prevents the LLM from losing context during longer chats while ensuring the payload never exceeds token limits.
+* **Live Token Streaming:** Rather than waiting for the entire response to generate, the backend utilizes asynchronous generators to stream chunks of text back to the Next.js frontend in real-time.
+* **Strict System Prompting:** The AI is grounded using advanced prompt engineering techniques to answer questions based exclusively on the injected CV data without hallucinating capabilities, external links, or false roles.
+
+## 🚀 Getting Started
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/HelloVR.ai.git
+git clone [https://github.com/vivekrajraghav/HelloVR.ai.git](https://github.com/vivekrajraghav/HelloVR.ai.git)
 cd HelloVR.ai
+
 ```
 
-### 2. Backend Setup
-Navigate to the backend directory, install dependencies, and run the server.
+### 2. Backend Setup (FastAPI)
 
 ```bash
 cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
 
-# Set your local environment variables (Linux/macOS)
-export GROQ_API_KEY="your_primary_key_here"
-export BACKUP_GROQ_API_KEY="your_backup_key_here" # Optional
-
-# Run the FastAPI server
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
-*The backend will be available at `http://localhost:8000` or your local network IP (e.g., `http://10.x.x.x:8000`).*
 
-### 3. Frontend Setup
-Open a new terminal window, navigate to the frontend directory, and start the Next.js development server.
+Create a `.env` file in the `backend` folder and add your single API key:
+
+```env
+GROQ_API_KEY=your_api_key_here
+
+```
+
+Run the server locally:
 
 ```bash
-cd frontend/recruit-bot
+uvicorn main:app --reload
+
+```
+
+### 3. Frontend Setup (Next.js)
+
+```bash
+cd ../frontend/recruit-bot
 npm install
 
-# Run the frontend server
-npm run dev
 ```
-*The frontend will be available at `http://localhost:3000`.*
 
----
+Create a `.env.local` file in the `frontend/recruit-bot` folder to link your local backend:
 
-## 🌐 Production Deployment Setup
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
 
-- **Backend (Render):** Set the Root Directory to `backend`. Use the build command `pip install -r requirements.txt` and start command `uvicorn main:app --host 0.0.0.0 --port $PORT`. Add `GROQ_API_KEY` to environment variables.
-- **Frontend (Vercel):** Set the Root Directory to `frontend/recruit-bot`. Add the environment variable `NEXT_PUBLIC_API_URL` pointing to your Render backend URL (e.g., `https://hellovr-backend.onrender.com`).
+```
 
----
+Run the development server:
+
+```bash
+npm run dev
+
+```
+
+## 🌐 Deployment Pipeline
+
+* **Frontend (Vercel):** The Next.js app (`frontend/recruit-bot`) is deployed automatically via Vercel.
+* **Backend (Render):** The FastAPI server is hosted on Render.
+* **CV Updates:** To update the AI's knowledge base, edit the source CV text inside the backend code and push the changes to the `main` branch on GitHub. Render will automatically detect the commit, trigger a fresh server build, and instantly update the live AI portfolio.
