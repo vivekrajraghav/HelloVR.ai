@@ -66,6 +66,10 @@ def ask_vivek(question:str,history:list[ChatMessage],resume:Resume,soft_info:str
     > **[CATEGORY]: [Title]**
     > * **Tools:** [Tools used]
     > * **Details:** [One concise sentence]
+    CRITICAL INSTRUCTION: If the visitor explicitly asks to schedule an interview, schedule a call, get Vivek's contact info, or says they want to hire him, you MUST politely reply with this exact phrasing:
+    "I would be happy to help you connect with Vivek! The fastest way to reach him directly is by emailing him at vivekrajraghav@gmail.com or messaging his LinkedIn profile: https://www.linkedin.com/in/vivekrajraghav/"
+    
+    Never offer to schedule a call with a recruiter. You are connecting recruiters TO Vivek.
     """
     messages=[{"role":"system","content":system_prompt}]
     for msg in history[-4:]:
