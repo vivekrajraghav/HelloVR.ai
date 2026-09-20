@@ -1,14 +1,15 @@
 {
-    "pdf_hash": "d89dddaee5f9eefc6614d3572c498167",
+    "pdf_hash": "6677bb99201755c7fba4d9b8c147535d",
     "parsed_data": {
         "name": "VIVEK",
         "email": "vivekrajraghav@gmail.com",
         "phone": "9870710209",
-        "total_experience": null,
         "skills": [
             "Python",
             "Linux/WSL",
             "AWS CLI",
+            "Git",
+            "GitHub",
             "NumPy",
             "Pandas",
             "Matplotlib",
@@ -18,6 +19,7 @@
             "LangChain",
             "ChromaDB",
             "Ollama",
+            "FastAPI",
             "Streamlit",
             "Snakemake",
             "Groq API",
@@ -34,47 +36,29 @@
             "Immunoassays",
             "Cell Culture"
         ],
-        "experience": [
+        "exp": [
             {
                 "company": "INMAS DRDO, New Delhi",
-                "role": "Research Intern",
-                "duration": "Feb 2026 - May 2026",
-                "description": "Analyzed 16S rRNA metagenomic data to quantify radiation\u2011induced gut microbiome shifts and taxonomic population dynamics in murine models. Executed comprehensive wet\u2011lab workflows encompassing bacterial phenotypic characterization, bacteriophage isolation, and kinetic assays to evaluate complex phage\u2011host interactions.",
-                "skill_used": "Python, NumPy, Pandas, Scikit Learn, Fastp, Megahit, Kraken2, MAFFT, FastTree, Linux/WSL, AWS CLI"
-            },
-            {
-                "company": null,
-                "role": "Self Project",
-                "duration": "June 2026 - Present",
-                "description": "Developed a Microbiome Analytics Platform with RAG Assistant using Snakemake, ChromaDB, LangChain, and Ollama. Engineered an automated bioinformatics pipeline for WGS and 16S rRNA data (Fastp, Megahit, Kraken2, MAFFT, FastTree). Built an interactive Streamlit frontend with Plotly visualizations. Configured high\u2011concurrency AWS CLI fetching for Kraken databases and containerized workflow with Conda.",
-                "skill_used": "Snakemake, Streamlit, Plotly, Pandas, NumPy, LangChain, ChromaDB, Ollama, AWS CLI, Conda, Linux/WSL"
-            },
-            {
-                "company": null,
-                "role": "Self Project",
-                "duration": "2026",
-                "description": "Developed an automated, LLM\u2011driven recruitment tool using Python and the Groq API to extract structured data from job descriptions and resumes, evaluate candidate skills, calculate match scores, and generate ranked outputs with AI verdicts. Enforced structured JSON extraction with Pydantic schemas.",
-                "skill_used": "Python, Groq API, Pydantic, AWS CLI"
+                "role": "Research Internship",
+                "duration": "February 2026 - May 2026",
+                "desc": "Topic- Effect of LDI-2000 Irradiation on Gut Microbiota of C57BL/6 Mice. Analyzed 16S rRNA metagenomic data to quantify radiation-induced gut microbiome shifts and taxonomic population dynamics in murine models. Executed comprehensive wet\u2011lab workflows encompassing bacterial phenotypic characterization, bacteriophage isolation, and kinetic assays to evaluate complex phage\u2011host interactions.",
+                "skill": null
             }
         ],
-        "education": [
-            "M.Tech in Data Science (I Year I Sem), Indian Institute of Technology Roorkee, 2028 -",
-            "B.Tech in Biotechnology, Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut, 2026, CGPA 8.250",
-            "Intermediate (Class XII), Alpine Public School, Khurja (CBSE Board), 2021, 92.00%",
-            "Matriculate (Class X), D.S. Memorial Oxford Public School, Shikarpur (CBSE Board), 2019, 82.16%"
+        "edu": [
+            "M.Tech Data Science Indian Institute of Technology, Roorkee (2026 to 2028 Expected)",
+            "BTech Biotechnology Sardar Vallabhbhai Patel University of Agriculture and Technology, Modipuram, Meerut, Uttar Pradesh (2022 to 2026) CGPA 8.250",
+            "Intermediate (Class XII) Alpine Public School, Khurja, Bulandshahr, Uttar Pradesh (2021) 92.00 %",
+            "Matriculate (Class X) D.S. Memorial Oxford Public School, Shikarpur, Uttar Pradesh (2019) 82.16 %"
         ],
         "projects": [
-            "Effect of LDI-2000 Irradiation on Gut Microbiota of C57BL/6 Mice",
-            "Microbiome Analytics Platform with RAG Assistant",
-            "Automated bioinformatics pipeline using Snakemake for WGS and 16S rRNA sequencing",
-            "Local RAG AI assistant for semantic querying of taxonomic profiling and QC metrics",
-            "Interactive frontend with Streamlit, Plotly, Pandas, and NumPy for visualizations",
-            "LLM\u2011driven recruitment tool with Groq API and Pydantic JSON validation",
-            "AI\u2011Powered Resume Analyzer & Scorer"
+            "Microbiome Analytics Platform with RAG Assistant | Self Project June 2026 - Built an automated ETL pipeline (Python, Snakemake, Pandas) and an interactive Streamlit dashboard integrated with a local RAG LLM engine (LangChain, ChromaDB, Ollama) for real-time data visualization and semantic search",
+            "AI-Powered Resume Analyzer & Scorer | Self Project July 2026 - Built an automated, LLM\u2011driven recruitment tool using Python and the Groq API (openai/gpt\u2011oss\u2011120b) to extract structured data from job descriptions and candidate resumes. Features dual\u2011prompting scoring mechanism to evaluate candidate skills, calculate a 0\u2013100% match score, and generate ranked outputs with detailed AI verdicts, while leveraging Pydantic schemas to enforce reliable JSON extraction and eliminate LLM hallucinations",
+            "HelloVR.ai (Interactive AI Recruiting Assistant) - Full\u2011stack conversational recruiting assistant powered by Next.js (Vercel) and FastAPI (Render), featuring real\u2011time streaming LLM responses, a custom terminal interface, and robust token\u2011optimization pipelines"
         ],
-        "certificates": [
+        "certi": [
             "Monitoring in Google Cloud Skill Badge \u2013 Google (Issued Aug 2026)",
-            "Analyze Sentiment with Natural Language API Skill Badge \u2013 Google (Issued Aug 2026)",
+            "Analyse Sentiment with Natural Language API Skill Badge \u2013 Google (Issued Aug 2026)",
             "Immunology \u2013 NPTEL, IIT Kharagpur (Issued Oct 2024) Credential ID: NPTEL24BT63S655600650",
             "Bioreactors \u2013 NPTEL, IIT Madras (Issued Aug 2024) Credential ID: NPTEL24BT39S141600077",
             "Human Molecular Genetics \u2013 NPTEL, IIT Kanpur (Issued Apr 2023) Credential ID: NPTEL23BT10S45160686"

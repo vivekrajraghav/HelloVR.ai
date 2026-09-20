@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { Terminal, SendHorizonal, Loader2, Code2, Zap, FileText, ToggleLeft, ToggleRight, Database } from "lucide-react";
@@ -24,6 +23,10 @@ type Message = {
 };
 
 export default function ChatUI() {
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/wake`)
+      .catch((err) => console.error("Wake ping failed:", err)); 
+  }, []);
   const [viewMode, setViewMode] = useState<"terminal" | "pdf">("terminal");
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -103,8 +106,8 @@ export default function ChatUI() {
 
   const quickQueries = [
     "Show Data Science & Bioinformatics skills",
-    "Detail educational journey",
-    "Summarize soft skills and leadership"
+    "Summarize soft skills and leadership",
+    "Detail educational journey"
   ];
 
   return (

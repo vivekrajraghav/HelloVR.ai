@@ -178,6 +178,9 @@ app.add_middleware(
 @app.get("/")
 def home():
     return {"message":"Welcome! I'm representative of Mr. Vivek"}
+@app.get("/wake",tags=["Health"])
+async def wake_up():
+    return {"status":"awake "}
 
 @app.post("/chat")
 def chat(request:ChatRequest):
